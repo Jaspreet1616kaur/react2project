@@ -1,16 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { ListGroup } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import Countrys from "../Component/Countrys";
-import CreateCards from "../CreateCards";
+// import Countrys from "../Component/Countrys";
+// import CreateCards from "../CreateCards";
 // import CreateCards from "../CreateCards";
 
 function Details() {
   let { name } = useParams();
   console.log("name: ", name);
-
   console.log("useParams()>>>", useParams());
   // Second Fetch function with Name of the country
   const [details, setDetails] = useState([]);
@@ -21,7 +20,7 @@ function Details() {
       const results = await response.json();
       setDetails(results);
     } catch (error) {
-      console.log("error  :>>", error.message);
+      console.log("error  :>>", error);
       setError(error.message);
     }
   };
@@ -38,10 +37,13 @@ function Details() {
 
   return (
     <>
-      <Button variant="primary">Go Back</Button>
+      <Link to="/countrys">
+        {" "}
+        <Button variant="primary">Go BACK</Button>
+      </Link>
       {filteredData.map((country, i) => {
         return (
-          <Card style={{ height: "28rem", width: "28rem" }}>
+          <Card style={{ height: "28rem", width: "40rem" }}>
             <Card.Img variant="top" src={country.flag} />
             <Card.Body>
               <Card.Title>
