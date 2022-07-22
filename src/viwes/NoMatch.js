@@ -1,5 +1,5 @@
 import React from "react";
-//import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function NoMatch() {
@@ -12,7 +12,7 @@ function NoMatch() {
     <div>
       <h1>No Data here!</h1>
       <p>{/* <Link to="/">Go to home</Link> */}</p>
-      <button onClick={goHomeHandler}>Redirect Home</button>
+      <button onClick={goHomeHandler}>Redirect to Home</button>
     </div>
   );
 }

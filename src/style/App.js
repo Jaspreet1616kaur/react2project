@@ -16,8 +16,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="countrys" element={<Countrys />} />
-        <Route path=":countrys/capital" element={<Details />} />
+        <Route path="/countrys/:name" element={<Details />} />
         <Route path="about" element={<About />} />
+
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </div>
