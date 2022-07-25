@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Countrys from "../Component/Countrys";
+import Countrys from "../components/Countrys";
 import Home from "../viwes/Home";
 import About from "../viwes/About";
-import Nav from "../Component/Nav";
+import Nav from "../components/Nav";
 import NoMatch from "../viwes/NoMatch";
 import Details from "../viwes/Details";
 
