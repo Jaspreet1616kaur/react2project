@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import Search from "./Search";
+import Search from "./Search";
 function Nav() {
   return (
     <div>
@@ -13,7 +13,6 @@ function Nav() {
         <Link to="/">Home</Link> | <Link to="countrys">Country </Link> | {""}
         <Link to="about">About</Link>
       </nav>
-      {/* <Search /> */}
     </div>
   );
 }
