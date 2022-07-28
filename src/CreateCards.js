@@ -10,7 +10,6 @@ function CreateCards({ country }) {
   // const showMore = () => {
   //   navigate("../countrys/${name}");
   // };
-
   return (
     <Col>
       <Card>

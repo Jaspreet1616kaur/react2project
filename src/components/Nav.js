@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { AuthContext } from "./context/authContext";
 import Search from "./Search";
 function Nav() {
+  // here i create login funtion
+  const { user, setUser } = useContext(AuthContext);
+  const login = () => {
+    console.log(user);
+    setUser({
+      userName: "Jaspreet",
+    });
+  };
   return (
     <div>
       <nav
@@ -12,6 +22,10 @@ function Nav() {
       >
         <Link to="/">Home</Link> | <Link to="countrys">Country </Link> | {""}
         <Link to="about">About</Link>
+        {/* // here i have create a login button  */}
+        <Button variant="info" onClick={login}>
+          Login
+        </Button>
       </nav>
     </div>
   );

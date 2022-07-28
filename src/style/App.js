@@ -1,26 +1,32 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Countrys from "../components/Countrys";
-import Home from "../viwes/Home";
-import About from "../viwes/About";
+import Home from "../views/Home";
+import About from "../views/About";
 import Nav from "../components/Nav";
-import NoMatch from "../viwes/NoMatch";
-import Details from "../viwes/Details";
+import NoMatch from "../views/NoMatch";
+import Details from "../views/Details";
+import { CharactersContextProvider } from "../components/context/charactersContext";
+import { AuthContextProvider } from "../components/context/authContext";
 
 function App() {
   return (
     <div className="APP">
       <h2>Rest Countries</h2>
       {/* <Countrys /> */}
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="countrys" element={<Countrys />} />
-        <Route path="/countrys/:name" element={<Details />} />
-        <Route path="about" element={<About />} />
+      <AuthContextProvider>
+        <Nav />
+        <CharactersContextProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="countrys" element={<Countrys />} />
+            <Route path="/countrys/:name" element={<Details />} />
+            <Route path="about" element={<About />} />
 
-        <Route path="*" element={<NoMatch />} />
-      </Routes>
+            <Route path="*" element={<NoMatch />} />
+          </Routes>
+        </CharactersContextProvider>
+      </AuthContextProvider>
     </div>
   );
 }
