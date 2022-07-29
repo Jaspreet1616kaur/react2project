@@ -18,6 +18,8 @@ function Details() {
   const [details, setDetails] = useState([]);
   const [error, setError] = useState(null);
   const [loader, setLoader] = useState(true);
+
+  const [currencyCode, setCurrencyCode] = useState(null);
   const fecthDetails = async () => {
     try {
       const response = await fetch(
@@ -28,6 +30,7 @@ function Details() {
       setLoader(false);
       // console.log("results>>>", results);
       setDetails(results[0]);
+      setCurrencyCode(Object.keys(results[0].currencies));
     } catch (error) {
       console.log("error  :>>", error);
       setError(error.message);
@@ -45,7 +48,10 @@ function Details() {
       </Link>
       {!loader && (
         <>
-          <p>{details.name.official} </p>
+          <p>
+            {" "}
+            <h1>{details.name.official} </h1>
+          </p>
           <MapContainer
             center={[details.latlng[0], details.latlng[1]]}
             zoom={4}
@@ -68,37 +74,99 @@ function Details() {
               </Popup>
             </Marker>
           </MapContainer>
+          <Table striped bordered hover size="sm">
+            <thead>
+              <h1>About Country Data </h1>
+              <tr>
+                <th>
+                  <h2>Population</h2>
+                </th>
+                <td>
+                  {" "}
+                  <h2>{details.population}</h2>{" "}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  {" "}
+                  <h2>Currencies</h2>
+                </th>
+                <td>
+                  <h2>
+                    {" "}
+                    {console.log(
+                      "object entries",
+                      Object.entries(details.currencies)
+                    )}
+                    {/* for currencies */}
+                    {details.currencies &&
+                      Object.entries(details.currencies).map((element) => {
+                        return (
+                          <td>
+                            {/* {element[0]} : {element[1].name} */}
+                            {element[1].name}
+                          </td>
+                        );
+                      })}
+                  </h2>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <h2>Languages</h2>
+                </th>
+                <td>
+                  <h2>
+                    {" "}
+                    {details.languages &&
+                      Object.entries(details.languages).map((element) => {
+                        return <td>{element[1]}</td>;
+                      })}
+                  </h2>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <h2>Flag</h2>
+                </th>
+                <td>
+                  {" "}
+                  <h2>{details.flag}</h2>{" "}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <h2>Capital</h2>
+                </th>
+                <td>
+                  {" "}
+                  <h2>{details.capital}</h2>{" "}
+                </td>
+              </tr>
+              {/* <tr>
+                <th>
+                  <h2>Translatins</h2>
+                </th>
+                <td>
+                  {" "}
+                  <h2>
+                    {" "}
+                    {details.translations &&
+                      Object.entries(details.translations).map((element) => {
+                        return <td>{element[0]}</td>;
+                      })}
+                  </h2>{" "}
+                </td>
+              </tr> */}
+            </thead>
+            <tbody>
+              <tr> </tr>
+            </tbody>
+          </Table>
         </>
       )}
 
       {/* here i create a table for all countrys information */}
-
-      <Table striped bordered hover size="sm">
-        <thead>
-          <tr>
-            <th>Population</th>
-            <th> Currencies</th>
-            <th>Border</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td> {details.population}</td>
-            {/* <td> {[details.currencies[0]]}</td> */}
-            <td>hhhhhh</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </Table>
     </>
   );
 }

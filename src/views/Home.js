@@ -3,6 +3,7 @@ import { AuthContext } from "../components/context/authContext";
 import { CharactersContext } from "../components/context/charactersContext";
 import homeimage from "../images/home.webp";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 function Home() {
   const { Countrys } = useContext(CharactersContext);
   const { user } = useContext(AuthContext);
@@ -18,10 +19,14 @@ function Home() {
         and researchers appreciate<br></br> our ability deliver hard to find,
         fun and current information. Get started, pick a country!
       </h2>
-      <button>
-        {" "}
-        <Link to="countrys">Button </Link>
-      </button>
+      <h4>
+        if you want more information about every country just click on button{" "}
+      </h4>
+      <div className="button">
+        <Button variant="info">
+          <Link to="countrys">Button </Link>{" "}
+        </Button>
+      </div>
     </div>
   );
 }
