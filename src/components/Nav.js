@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "./context/authContext";
+
 import Search from "./Search";
 function Nav() {
   // here i create login funtion
@@ -11,6 +12,10 @@ function Nav() {
     setUser({
       userName: "Jaspreet",
     });
+  };
+  const logout = () => {
+    console.log(user);
+    setUser(null);
   };
   return (
     <div>
@@ -23,9 +28,15 @@ function Nav() {
         <Link to="/">Home</Link> | <Link to="countrys">Country </Link> | {""}
         <Link to="about">About</Link>
         {/* // here i have create a login button  */}
-        <Button variant="info" onClick={login}>
-          Login
-        </Button>
+        {user ? (
+          <Button variant="danger" onClick={logout}>
+            logout{" "}
+          </Button>
+        ) : (
+          <Button variant="info" onClick={login}>
+            Login
+          </Button>
+        )}
       </nav>
     </div>
   );

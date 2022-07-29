@@ -4,8 +4,9 @@ import { Card } from "react-bootstrap";
 import { ListGroup } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import Table from "react-bootstrap/Table";
+import "./DetailsTable.css";
 import Countrys from "../components/Countrys";
-// import Countrys from "../Component/Countrys";
 // import CreateCards from "../CreateCards";
 // import CreateCards from "../CreateCards";
 
@@ -19,7 +20,6 @@ function Details() {
   const [loader, setLoader] = useState(true);
   const fecthDetails = async () => {
     try {
-      // const response = await fetch("https://restcountries.com/v2/all");
       const response = await fetch(
         `https://restcountries.com/v3.1/name/${name}`
       );
@@ -45,9 +45,7 @@ function Details() {
       </Link>
       {!loader && (
         <>
-          <h2>{details.capital}</h2>
-          {/* <p>{details.name.official} </p> */}
-
+          <p>{details.name.official} </p>
           <MapContainer
             center={[details.latlng[0], details.latlng[1]]}
             zoom={4}
@@ -72,6 +70,35 @@ function Details() {
           </MapContainer>
         </>
       )}
+
+      {/* here i create a table for all countrys information */}
+
+      <Table striped bordered hover size="sm">
+        <thead>
+          <tr>
+            <th>Population</th>
+            <th> Currencies</th>
+            <th>Border</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> {details.population}</td>
+            {/* <td> {[details.currencies[0]]}</td> */}
+            <td>hhhhhh</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>@twitter</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </Table>
     </>
   );
 }

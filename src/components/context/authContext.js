@@ -1,6 +1,5 @@
-//1import hook
 import { createContext, useState } from "react";
-//2.create Context/store
+
 const AuthContext = createContext();
 //3 Create provider
 

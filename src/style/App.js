@@ -8,6 +8,7 @@ import NoMatch from "../views/NoMatch";
 import Details from "../views/Details";
 import { CharactersContextProvider } from "../components/context/charactersContext";
 import { AuthContextProvider } from "../components/context/authContext";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 function App() {
   return (
@@ -19,7 +20,15 @@ function App() {
         <CharactersContextProvider>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="countrys" element={<Countrys />} />
+            <Route
+              path="countrys"
+              element={
+                <ProtectedRoute>
+                  {" "}
+                  <Countrys />{" "}
+                </ProtectedRoute>
+              }
+            />
             <Route path="/countrys/:name" element={<Details />} />
             <Route path="about" element={<About />} />
 
