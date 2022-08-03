@@ -40,7 +40,11 @@ function Register() {
         onChange={handlePasswordlHandler}
       />
       <button onClick={handleRegisterHandler}>Register</button>
-      <Link to="/login">if you have account, go to login</Link>
+      <Link to="/login">
+        {" "}
+        <br></br>
+        if you have account, go to login
+      </Link>
     </div>
   );
 }

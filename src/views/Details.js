@@ -143,21 +143,6 @@ function Details() {
                   <h2>{details.capital}</h2>{" "}
                 </td>
               </tr>
-              {/* <tr>
-                <th>
-                  <h2>Translatins</h2>
-                </th>
-                <td>
-                  {" "}
-                  <h2>
-                    {" "}
-                    {details.translations &&
-                      Object.entries(details.translations).map((element) => {
-                        return <td>{element[0]}</td>;
-                      })}
-                  </h2>{" "}
-                </td>
-              </tr> */}
             </thead>
             <tbody>
               <tr> </tr>

@@ -40,8 +40,7 @@ function Nav() {
       >
         <Link to="/">Home</Link> | |
         {!user && <Link to="/register">Register </Link>}| |{" "}
-        <Link to="/countrys">Country </Link> | |<Link to="/chat">Chat</Link> |
-        <Link to="/about">About</Link>
+        <Link to="/countrys">Country </Link> | |<Link to="/chat">Chat</Link>
         {user && (
           <Button variant="danger" onClick={logout}>
             logout{" "}

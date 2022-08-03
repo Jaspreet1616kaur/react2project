@@ -15,6 +15,9 @@ import Chat from "../views/Chat";
 import { AuthContextProvider } from "../context/authContext";
 import { CharactersContextProvider } from "../context/charactersContext";
 
+import Navbars from "../components/Navbars";
+import TestNavBar from "../components/TestNavBar";
+
 function App() {
   // console.log("app", app);
   return (
@@ -22,7 +25,8 @@ function App() {
       <h2>Rest Countries</h2>
       {/* <Countrys /> */}
       <AuthContextProvider>
-        <Nav />
+        <TestNavBar />
+        {/* <Nav /> */}
         <CharactersContextProvider>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -30,8 +34,7 @@ function App() {
               path="countrys"
               element={
                 <ProtectedRoute>
-                  {" "}
-                  <Countrys />{" "}
+                  <Countrys />
                 </ProtectedRoute>
               }
             />
@@ -45,11 +48,17 @@ function App() {
               }
             />
 
-            <Route path="/countrys/:name" element={<Details />} />
+            <Route
+              path="/countrys/:name"
+              element={
+                <ProtectedRoute>
+                  <Details />
+                </ProtectedRoute>
+              }
+            />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
-            <Route path="about" element={<About />} />
-
+            <Route path="chat" element={<Chat />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
         </CharactersContextProvider>

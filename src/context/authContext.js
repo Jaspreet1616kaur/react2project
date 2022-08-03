@@ -13,7 +13,9 @@ const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const redirectTo = useNavigate();
+
   const register = async (email, password) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -39,12 +41,17 @@ const AuthContextProvider = ({ children }) => {
         // const user = userCredential.user;
         // ...
         setUser(userCredential.user);
+        redirectTo("/");
       })
       .catch((error) => {
         setUser(null);
         const errorCode = error.code;
+        console.log("errorCode", typeof errorCode);
         const errorMessage = error.message;
         console.log(errorMessage);
+        if (errorCode === "auth/user-not-found") {
+          alert("please,  create an acount first");
+        }
       });
   };
   const checkIfUserisLoggedIn = () => {
@@ -55,9 +62,11 @@ const AuthContextProvider = ({ children }) => {
         const uid = user.uid;
         // ...
         setUser(user);
+        setLoading(false);
       } else {
         // User is signed out
         setUser(null);
+        setLoading(false);
       }
     });
   };
@@ -66,7 +75,7 @@ const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ setUser, register, login, user }}>
+    <AuthContext.Provider value={{ setUser, register, login, user, loading }}>
       {children}
     </AuthContext.Provider>
   );

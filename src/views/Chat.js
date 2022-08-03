@@ -13,6 +13,7 @@ import { AuthContext } from "../context/authContext";
 function Chat() {
   //   console.log("db :>> ", db);
   const { user } = useContext(AuthContext);
+  console.log("user.email", user.email);
   const [messages, setMessages] = useState(null);
   const [chatMsg, setChatMsg] = useState("");
 
@@ -60,7 +61,7 @@ function Chat() {
 
   return (
     <div>
-      <h2>Chat</h2>
+      <h2>Chat </h2>
       {messages &&
         messages.map((message, i) => {
           return (
@@ -68,6 +69,7 @@ function Chat() {
               <p>{message.text}</p>
               <p>{message.author}</p>
               <p>{msgDate(message.date.seconds)}</p>
+              {user.email === message.author && <p>your message</p>}
             </div>
           );
         })}
