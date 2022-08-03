@@ -10,7 +10,7 @@ function Home() {
   return (
     <div>
       <h2>welcome in our Countries website</h2>
-      {user && <h4>welcome to {user.userName} </h4>}
+      {user && <h4>welcome to {user.email} </h4>}
       {/* picture of the worl / map of the world */}
       <img src={homeimage}></img>
       <h2>
@@ -19,9 +19,11 @@ function Home() {
         and researchers appreciate<br></br> our ability deliver hard to find,
         fun and current information. Get started, pick a country!
       </h2>
+
       <h4>
         if you want more information about every country just click on button{" "}
       </h4>
+
       <div className="button">
         <Button variant="info">
           <Link to="countrys">Button </Link>{" "}

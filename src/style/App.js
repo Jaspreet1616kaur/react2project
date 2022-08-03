@@ -9,8 +9,12 @@ import Details from "../views/Details";
 import { CharactersContextProvider } from "../components/context/charactersContext";
 import { AuthContextProvider } from "../components/context/authContext";
 import ProtectedRoute from "../components/ProtectedRoute";
+import Register from "../views/Register";
+import { app } from "../config/config";
+import Login from "../views/Login";
 
 function App() {
+  // console.log("app", app);
   return (
     <div className="APP">
       <h2>Rest Countries</h2>
@@ -30,6 +34,8 @@ function App() {
               }
             />
             <Route path="/countrys/:name" element={<Details />} />
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
             <Route path="about" element={<About />} />
 
             <Route path="*" element={<NoMatch />} />

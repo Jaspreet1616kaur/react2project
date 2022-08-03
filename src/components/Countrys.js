@@ -4,15 +4,18 @@ import CreateCards from "../CreateCards";
 import { CharactersContext } from "./context/charactersContext";
 import Search from "./Search";
 import homeimage from "../images/sad.jpg";
+import Option from "../Option";
 function Countrys() {
   const [filterResult, setFilterResult] = useState("");
-  const { countrys, error, fecthCountrys } = useContext(CharactersContext);
 
+  const { countrys, error, fecthCountrys } = useContext(CharactersContext);
   // here i create a serach filtering
   const inputWord = (event) => {
     setFilterResult(event.target.value);
+
     // console.log("event.target.value: ", event.target.value);
   };
+
   const filterCountry = !filterResult
     ? countrys
     : countrys.filter((item) => {
