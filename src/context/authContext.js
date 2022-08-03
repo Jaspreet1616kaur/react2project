@@ -6,7 +6,7 @@ import {
 } from "firebase/auth";
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../config/config";
+import { auth } from "../config/config";
 
 const AuthContext = createContext();
 //3 Create provider

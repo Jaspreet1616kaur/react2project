@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useContext } from "react";
-import { AuthContext } from "../components/context/authContext";
 
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

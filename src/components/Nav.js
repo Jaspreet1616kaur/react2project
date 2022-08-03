@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "./context/authContext";
+
 import { signOut } from "firebase/auth";
 import { auth } from "../config/config";
+import { AuthContext } from "../context/authContext";
 function Nav() {
   // here i create login funtion
   const { user, setUser, error } = useContext(AuthContext);
@@ -39,14 +40,11 @@ function Nav() {
       >
         <Link to="/">Home</Link> | |
         {!user && <Link to="/register">Register </Link>}| |{" "}
-        <Link to="/countrys">Country </Link> | |<Link to="/about">About</Link>
-        {user ? (
+        <Link to="/countrys">Country </Link> | |<Link to="/chat">Chat</Link> |
+        <Link to="/about">About</Link>
+        {user && (
           <Button variant="danger" onClick={logout}>
             logout{" "}
-          </Button>
-        ) : (
-          <Button variant="info" onClick={login}>
-            Login
           </Button>
         )}
       </nav>

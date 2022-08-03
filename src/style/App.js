@@ -6,12 +6,14 @@ import About from "../views/About";
 import Nav from "../components/Nav";
 import NoMatch from "../views/NoMatch";
 import Details from "../views/Details";
-import { CharactersContextProvider } from "../components/context/charactersContext";
-import { AuthContextProvider } from "../components/context/authContext";
+
 import ProtectedRoute from "../components/ProtectedRoute";
 import Register from "../views/Register";
 import { app } from "../config/config";
 import Login from "../views/Login";
+import Chat from "../views/Chat";
+import { AuthContextProvider } from "../context/authContext";
+import { CharactersContextProvider } from "../context/charactersContext";
 
 function App() {
   // console.log("app", app);
@@ -33,6 +35,16 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="chat"
+              element={
+                <ProtectedRoute>
+                  {" "}
+                  <Chat />{" "}
+                </ProtectedRoute>
+              }
+            />
+
             <Route path="/countrys/:name" element={<Details />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />

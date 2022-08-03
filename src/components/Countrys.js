@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
 import CreateCards from "../CreateCards";
-import { CharactersContext } from "./context/charactersContext";
+
 import Search from "./Search";
 import homeimage from "../images/sad.jpg";
 import Option from "../Option";
+import { CharactersContext } from "../context/charactersContext";
 function Countrys() {
   const [filterResult, setFilterResult] = useState("");
 

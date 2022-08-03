@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import { AuthContext } from "../components/context/authContext";
+
 import { auth } from "../config/config";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 function Register() {
   console.log("auth :>> ", auth);
   const [email, setEmail] = useState("");

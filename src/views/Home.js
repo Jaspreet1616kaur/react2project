@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../components/context/authContext";
-import { CharactersContext } from "../components/context/charactersContext";
+
 import homeimage from "../images/home.webp";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import { CharactersContext } from "../context/charactersContext";
+import { AuthContext } from "../context/authContext";
 function Home() {
   const { Countrys } = useContext(CharactersContext);
   const { user } = useContext(AuthContext);
