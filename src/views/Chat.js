@@ -1,5 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { db } from "../config/config";
+import Toast from "react-bootstrap/Toast";
+import { Col, Container, Form, Row } from "react-bootstrap";
+
 import {
   collection,
   getDocs,
@@ -60,30 +63,41 @@ function Chat() {
   };
 
   return (
-    <div>
-      <h2>Chat </h2>
-      {messages &&
-        messages.map((message, i) => {
-          return (
-            <div key={i} style={{ backgroundColor: "grey", color: "white" }}>
-              <p>{message.text}</p>
-              <p>{message.author}</p>
-              <p>{msgDate(message.date.seconds)}</p>
-              {user.email === message.author && <p>your message</p>}
-            </div>
-          );
-        })}
-      <input
-        type="text"
-        name="chat"
-        id="chat"
-        value={chatMsg}
-        onChange={handleChatMsgHandler}
-      />
-      <div>
-        <button onClick={handleSendMsgHandler}>Send</button>
-      </div>
-    </div>
+    <Container>
+      <Row>
+        {messages &&
+          messages.map((message, i) => {
+            return (
+              <Col key={i}>
+                <Toast>
+                  <Toast.Header>
+                    <strong className="me-auto">{message.author}</strong>
+                    <small>somethings</small>
+                  </Toast.Header>
+                  <Toast.Body>{message.text}</Toast.Body>
+                  <p>{msgDate(message.date.seconds)}</p>
+                </Toast>
+                <br></br>
+              </Col>
+            );
+          })}
+      </Row>
+
+      <Form>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Message</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Write a message..."
+            value={chatMsg}
+            onChange={handleChatMsgHandler}
+          />
+        </Form.Group>
+        <button variant="primary" onClick={handleSendMsgHandler}>
+          Submit
+        </button>
+      </Form>
+    </Container>
   );
 }
 

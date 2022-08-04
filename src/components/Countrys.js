@@ -1,22 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Row } from "react-bootstrap";
+import { Form, Row } from "react-bootstrap";
 import CreateCards from "../CreateCards";
-
 import Search from "./Search";
 import homeimage from "../images/sad.jpg";
-import Option from "../Option";
+
 import { CharactersContext } from "../context/charactersContext";
 function Countrys() {
   const [filterResult, setFilterResult] = useState("");
 
+  const [population, setPopulation] = useState(null);
   const { countrys, error, fecthCountrys } = useContext(CharactersContext);
   // here i create a serach filtering
   const inputWord = (event) => {
     setFilterResult(event.target.value);
-
-    // console.log("event.target.value: ", event.target.value);
   };
 
+  // serach bar filtering
   const filterCountry = !filterResult
     ? countrys
     : countrys.filter((item) => {
@@ -28,13 +27,20 @@ function Countrys() {
     fecthCountrys();
   }, []);
 
+  useEffect(() => {
+    const populations =
+      countrys &&
+      countrys.map((pop) => {
+        return pop.population;
+      });
+    console.log("populations: ", populations);
+    setPopulation(populations);
+  }, []);
+  console.log("population", population);
   return (
     <div>
-      <Search
-        filterCountry={filterCountry}
-        countrys={countrys}
-        inputWord={inputWord}
-      />
+      <Search inputWord={inputWord} population={population} />
+      <Form.Label filterCountry={filterCountry} countrys={countrys} />
 
       <Row xs={1} sm={2} md={4} lg={4} xl={6} className="g-4">
         {filterCountry.length !== 0 ? (

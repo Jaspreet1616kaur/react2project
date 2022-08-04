@@ -7,13 +7,9 @@ import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import Table from "react-bootstrap/Table";
 import "./DetailsTable.css";
 import Countrys from "../components/Countrys";
-// import CreateCards from "../CreateCards";
-// import CreateCards from "../CreateCards";
-
 function Details() {
   let { name } = useParams();
-  // console.log("name: ", name);
-  // console.log("useParams()>>>", useParams());
+
   // Second Fetch function with Name of the country
   const [details, setDetails] = useState([]);
   const [error, setError] = useState(null);

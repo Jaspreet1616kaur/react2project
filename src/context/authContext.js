@@ -34,12 +34,10 @@ const AuthContextProvider = ({ children }) => {
     }
   };
   const login = (email, password) => {
-    // console.log(email, password);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        // const user = userCredential.user;
-        // ...
+
         setUser(userCredential.user);
         redirectTo("/");
       })

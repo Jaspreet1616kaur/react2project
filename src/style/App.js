@@ -2,20 +2,15 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Countrys from "../components/Countrys";
 import Home from "../views/Home";
-import About from "../views/About";
-import Nav from "../components/Nav";
 import NoMatch from "../views/NoMatch";
 import Details from "../views/Details";
-
 import ProtectedRoute from "../components/ProtectedRoute";
 import Register from "../views/Register";
-import { app } from "../config/config";
+// import { app } from "../config/config";
 import Login from "../views/Login";
 import Chat from "../views/Chat";
 import { AuthContextProvider } from "../context/authContext";
 import { CharactersContextProvider } from "../context/charactersContext";
-
-import Navbars from "../components/Navbars";
 import TestNavBar from "../components/TestNavBar";
 
 function App() {

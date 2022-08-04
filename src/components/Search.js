@@ -1,26 +1,9 @@
 import React, { useState } from "react";
+import { InputGroup } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
-function Search({ inputWord }) {
-  // console.log("country: ", countrys);
-  // const [name, setName] = useState("");
-  // const handleSelectChange = (e) => {
-  //   setName(e.target.value);
-  // };
-  // console.log("name: ", name);
-  // const continents = [];
-  // filterCountry &&
-  //   filterCountry.forEach((country, i) => {
-  //     continents.push(country.region);
-  //   });
-
-  // const removedDoubles = [...new Set(continents)];
-  // console.log("removedDoubles: ", removedDoubles);
-  // console.log("continents: ", continents);
-  const [status, setStatus] = useState("");
-  const statusChanged = (e) => {
-    setStatus(e.target.value);
-  };
+function Search({ inputWord, population }) {
+  const [val2, setVal2] = React.useState([0, 100]);
 
   return (
     <div>
@@ -33,26 +16,16 @@ function Search({ inputWord }) {
         onChange={inputWord}
         style={{ border: "1px solid black" }}
       />
-      {/* <select onChange={handleSelectChange}>
-        <option value={"first"}>Select Here</option>
-        {filterCountry &&
-          removedDoubles.map((continent, i) => {
-            return (
-              <option value={name} key={i}>
-                {continent}
-              </option>
-            );
-          })}
-      </select> */}
-      ::::::::::
-      <select>
-        <option value={status} onChange={statusChanged}>
-          Open this select menu
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </option>
-      </select>
+
+      <Form.Label style={{ background: "red" }}>
+        <h1> Check Population According to Range </h1>
+      </Form.Label>
+      <Form.Range
+        value={population}
+        min={0}
+        max={100}
+        onChange={(ev, v) => setVal2(v)}
+      />
     </div>
   );
 }
