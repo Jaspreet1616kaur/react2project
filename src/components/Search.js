@@ -17,7 +17,7 @@ function Search({ inputWord, population }) {
         style={{ border: "1px solid black" }}
       />
 
-      <Form.Label style={{ background: "red" }}>
+      {/* <Form.Label style={{ background: "red" }}>
         <h1> Check Population According to Range </h1>
       </Form.Label>
       <Form.Range
@@ -25,7 +25,7 @@ function Search({ inputWord, population }) {
         min={0}
         max={100}
         onChange={(ev, v) => setVal2(v)}
-      />
+      /> */}
     </div>
   );
 }

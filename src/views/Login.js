@@ -1,3 +1,4 @@
+import { textAlign } from "@mui/system";
 import React from "react";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
@@ -50,7 +51,7 @@ function Login() {
         Login
       </button>
       <Link to="/register" style={{ color: "green" }}>
-        ........if you DON'T have an Account register here first.
+        <h1>.if you DON'T have an Account register here first.</h1>
       </Link>
     </div>
   );

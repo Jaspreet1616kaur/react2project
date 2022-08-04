@@ -9,12 +9,14 @@ import {
   addDoc,
   query,
   onSnapshot,
+  doc,
+  deleteDoc,
 } from "firebase/firestore";
 import { useState } from "react";
 import { AuthContext } from "../context/authContext";
+import { async } from "@firebase/util";
 
 function Chat() {
-  //   console.log("db :>> ", db);
   const { user } = useContext(AuthContext);
   console.log("user.email", user.email);
   const [messages, setMessages] = useState(null);
@@ -26,7 +28,11 @@ function Chat() {
       onSnapshot(q, (querySnapshot) => {
         const msgs = [];
         querySnapshot.forEach((doc) => {
-          msgs.push(doc.data());
+          const myMessage = {
+            id: doc.id,
+            data: doc.data(),
+          };
+          msgs.push(myMessage);
           console.log("msgs", msgs);
           setMessages(msgs);
         });
@@ -62,20 +68,27 @@ function Chat() {
     }
   };
 
+  const handleDeleteClick = async (id) => {
+    const col = doc(db, "chat", id);
+    deleteDoc(col);
+    // await deleteDoc(doc(db, "chat", messages.id));
+  };
   return (
-    <Container>
+    <Container className="chats">
       <Row>
         {messages &&
           messages.map((message, i) => {
             return (
               <Col key={i}>
-                <Toast>
+                <Toast onClick={() => handleDeleteClick(message.id)}>
                   <Toast.Header>
-                    <strong className="me-auto">{message.author}</strong>
+                    <strong className="me-auto" style={{ background: "red " }}>
+                      {message.data.author}
+                    </strong>
                     <small>somethings</small>
                   </Toast.Header>
-                  <Toast.Body>{message.text}</Toast.Body>
-                  <p>{msgDate(message.date.seconds)}</p>
+                  <Toast.Body>{message.data.text}</Toast.Body>
+                  <p>{msgDate(message.data.date.seconds)}</p>
                 </Toast>
                 <br></br>
               </Col>
@@ -83,7 +96,7 @@ function Chat() {
           })}
       </Row>
 
-      <Form>
+      <div>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Message</Form.Label>
           <Form.Control
@@ -96,7 +109,7 @@ function Chat() {
         <button variant="primary" onClick={handleSendMsgHandler}>
           Submit
         </button>
-      </Form>
+      </div>
     </Container>
   );
 }
