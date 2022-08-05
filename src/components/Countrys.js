@@ -27,16 +27,6 @@ function Countrys() {
     fecthCountrys();
   }, []);
 
-  useEffect(() => {
-    const populations =
-      countrys &&
-      countrys.map((pop) => {
-        return pop.population;
-      });
-    console.log("populations: ", populations);
-    setPopulation(populations);
-  }, []);
-  console.log("population", population);
   return (
     <div>
       <Search inputWord={inputWord} population={population} />
