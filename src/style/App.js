@@ -14,14 +14,13 @@ import { CharactersContextProvider } from "../context/charactersContext";
 import TestNavBar from "../components/TestNavBar";
 
 function App() {
-  // console.log("app", app);
   return (
     <div className="APP">
       <h2>Rest Countries</h2>
-      {/* <Countrys /> */}
+
       <AuthContextProvider>
         <TestNavBar />
-        {/* <Nav /> */}
+
         <CharactersContextProvider>
           <Routes>
             <Route path="/" element={<Home />} />
